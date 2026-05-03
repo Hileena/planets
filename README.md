@@ -1,73 +1,52 @@
-# React + TypeScript + Vite
+# Milky Way Galaxy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive 3D solar system explorer built with React, TypeScript, and Three.js.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **3D Solar System** — all 8 planets rendered with texture maps using Three.js
+- **Orbital Animation** — toggle planetary rotation and orbits with a camera pull-back effect
+- **People in Space** — live sidebar widget showing who is currently aboard spacecraft, via the [Open Notify API](http://open-notify.org/)
+- **Orbit Controls** — drag to rotate, scroll to zoom, pan to explore
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- [Three.js](https://threejs.org/) — 3D rendering
+- [MUI](https://mui.com/) — UI components
+- [Vite](https://vitejs.dev/) — build tooling
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```
+src/
+├── App.tsx           # Layout — sidebar + main area
+├── App.module.css    # Page-level styles
+├── threeScene.tsx    # Three.js solar system scene
+├── peopleInSpace.tsx # Live ISS crew widget
+└── index.css         # Global reset and theme variables
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Textures
+
+Planet texture maps should be placed in `public/textures/`:
+
+```
+public/textures/
+├── sun.jpg
+├── mercury.jpg
+├── venus.jpg
+├── earth.jpg
+├── mars.jpg
+├── jupiter.jpg
+├── saturn.jpg
+├── uranus.jpg
+└── neptune.jpg
 ```
