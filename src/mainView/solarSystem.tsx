@@ -78,7 +78,6 @@ export default function SolarSystem({ onPlanetClick }: SolarSystemProps) {
     const sunGeometry = new THREE.SphereGeometry(1, 32, 32);
     const sunMaterial = new THREE.MeshMatcapMaterial({ matcap: sunTexture });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    sun.userData.name = "Sun";
     solarSystem.add(sun);
 
     const mercuryGeometry = new THREE.SphereGeometry(0.1, 32, 32);

@@ -1,6 +1,6 @@
 import styles from "./App.module.css";
 import { useState } from "react";
-import { SidePanel } from "./sideBar/sidePanel";
+import { SidePanel } from "./sideBar";
 import { MainView } from "./mainView/index";
 
 function App() {
@@ -8,9 +8,9 @@ function App() {
 
   return (
     <div className={styles.layout}>
-      <aside className={styles.sidebar}>
+      <div className={styles.sidebar}>
         <SidePanel selectedPlanet={selectedPlanet} />
-      </aside>
+      </div>
       <MainView onPlanetClick={setSelectedPlanet} />
     </div>
   );
