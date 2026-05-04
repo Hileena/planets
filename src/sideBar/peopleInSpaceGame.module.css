@@ -1,0 +1,65 @@
+.guessingGameContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  min-height: 400px;
+  background: #020024;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(15, 15, 64, 1) 100%
+  );
+  /* background-color: ivory; */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-color: white;
+  border-width: 0.25px;
+  border-style: solid;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 10px 25px 10px;
+}
+
+.numberInputContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  /* background-color: aqua; */
+  justify-content: center;
+}
+
+.astronautCounterContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  /* background-color: green; */
+  justify-content: center;
+}
+
+.numberDisplay {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-h);
+  letter-spacing: -0.02em;
+  /* background-color: yellow; */
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin-top: 1rem;
+  /* background-color: tomato; */
+  justify-content: center;
+}

@@ -1,6 +1,7 @@
-.layout {
+.container {
   display: flex;
-  min-height: 100svh;
+  flex-direction: column;
+  height: 100%;
 }
 
 .sidebar {
@@ -20,20 +21,9 @@
   letter-spacing: -0.02em;
 }
 
-.main {
-  flex: 1;
-  padding: 2rem;
-  min-width: 0;
-}
-
-.title {
-  font-size: 2.5rem;
-  letter-spacing: -0.04em;
-  margin-bottom: 1.5rem;
-}
-
-.sceneContainer {
-  position: relative;
-  width: 100%;
-  height: 90%;
+.guessingGameContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+  padding-top: 1rem;
 }
