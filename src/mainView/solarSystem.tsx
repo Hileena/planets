@@ -3,11 +3,20 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import Button from "@mui/material/Button";
 
-export default function ThreeScene() {
+interface SolarSystemProps {
+  onPlanetClick: (name: string) => void;
+}
+
+export default function SolarSystem({ onPlanetClick }: SolarSystemProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const isRotatingRef = useRef(false);
   const cameraTargetZRef = useRef(7);
+  const onPlanetClickRef = useRef(onPlanetClick);
   const [isRotating, setIsRotating] = useState(false);
+
+  useEffect(() => {
+    onPlanetClickRef.current = onPlanetClick;
+  });
 
   function toggleRotation() {
     isRotatingRef.current = !isRotatingRef.current;
@@ -27,7 +36,7 @@ export default function ThreeScene() {
       0.1,
       100,
     );
-    camera.position.set(1, 1, 7);
+    camera.position.set(0, 1, 12);
     scene.add(camera);
 
     const renderer = new THREE.WebGLRenderer({ canvas });
@@ -69,6 +78,7 @@ export default function ThreeScene() {
     const sunGeometry = new THREE.SphereGeometry(1, 32, 32);
     const sunMaterial = new THREE.MeshMatcapMaterial({ matcap: sunTexture });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    sun.userData.name = "Sun";
     solarSystem.add(sun);
 
     const mercuryGeometry = new THREE.SphereGeometry(0.1, 32, 32);
@@ -76,6 +86,7 @@ export default function ThreeScene() {
       matcap: mercuryTexture,
     });
     const mercury = new THREE.Mesh(mercuryGeometry, mercuryMaterial);
+    mercury.userData.name = "Mercury";
     mercury.position.x = 1.8;
     solarSystem.add(mercury);
 
@@ -84,6 +95,7 @@ export default function ThreeScene() {
       matcap: venusTexture,
     });
     const venus = new THREE.Mesh(venusGeometry, venusMaterial);
+    venus.userData.name = "Venus";
     venus.position.x = 2.6;
     solarSystem.add(venus);
 
@@ -92,12 +104,14 @@ export default function ThreeScene() {
       matcap: earthTexture,
     });
     const earth = new THREE.Mesh(earthGeometry, earthMaterial);
+    earth.userData.name = "Earth";
     earth.position.x = 3.5;
     solarSystem.add(earth);
 
     const marsGeometry = new THREE.SphereGeometry(0.25, 32, 32);
     const marsMaterial = new THREE.MeshMatcapMaterial({ matcap: marsTexture });
     const mars = new THREE.Mesh(marsGeometry, marsMaterial);
+    mars.userData.name = "Mars";
     mars.position.x = 4.8;
     solarSystem.add(mars);
 
@@ -106,6 +120,7 @@ export default function ThreeScene() {
       matcap: jupiterTexture,
     });
     const jupiter = new THREE.Mesh(jupiterGeometry, jupiterMaterial);
+    jupiter.userData.name = "Jupiter";
     jupiter.position.x = 7.0;
     solarSystem.add(jupiter);
 
@@ -115,11 +130,13 @@ export default function ThreeScene() {
       matcap: saturnTexture,
     });
     const saturn = new THREE.Mesh(saturnGeometry, saturnMaterial);
+    saturn.userData.name = "Saturn";
     const ringMaterial = new THREE.MeshMatcapMaterial({
       matcap: saturnTexture,
       side: THREE.DoubleSide,
     });
     const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+    ring.userData.name = "Saturn";
     ring.rotation.x = Math.PI / 2;
     saturn.add(ring);
     saturn.position.x = 9.5;
@@ -130,6 +147,7 @@ export default function ThreeScene() {
       matcap: uranusTexture,
     });
     const uranus = new THREE.Mesh(uranusGeometry, uranusMaterial);
+    uranus.userData.name = "Uranus";
     uranus.position.x = 12.0;
     solarSystem.add(uranus);
 
@@ -138,6 +156,7 @@ export default function ThreeScene() {
       matcap: neptuneTexture,
     });
     const neptune = new THREE.Mesh(neptuneGeometry, neptuneMaterial);
+    neptune.userData.name = "Neptune";
     neptune.position.x = 14.5;
     solarSystem.add(neptune);
 
@@ -146,6 +165,24 @@ export default function ThreeScene() {
     solarSystem.position.sub(center);
 
     scene.add(solarSystem);
+
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const handleClick = (e: MouseEvent) => {
+      const rect = canvas.getBoundingClientRect();
+      mouse.set(
+        ((e.clientX - rect.left) / rect.width) * 2 - 1,
+        -((e.clientY - rect.top) / rect.height) * 2 + 1,
+      );
+      raycaster.setFromCamera(mouse, camera);
+      const hits = raycaster.intersectObjects(solarSystem.children, true);
+      if (hits.length > 0) {
+        const name = hits[0].object.userData.name as string | undefined;
+        if (name) onPlanetClickRef.current(name);
+      }
+    };
+    canvas.addEventListener("click", handleClick);
 
     const handleResize = () => {
       sizes.width = canvas.clientWidth;
@@ -217,6 +254,7 @@ export default function ThreeScene() {
     tick();
 
     return () => {
+      canvas.removeEventListener("click", handleClick);
       window.removeEventListener("resize", handleResize);
       window.cancelAnimationFrame(animFrameId);
       controls.dispose();

@@ -1,7 +1,7 @@
-import ThreeScene from "./threeScene";
 import styles from "./App.module.css";
 import { useState } from "react";
 import { SidePanel } from "./sideBar/sidePanel";
+import { MainView } from "./mainView/index";
 
 function App() {
   const [selectedPlanet, setSelectedPlanet] = useState<string | null>(null);
@@ -9,15 +9,9 @@ function App() {
   return (
     <div className={styles.layout}>
       <aside className={styles.sidebar}>
-        <SidePanel />
+        <SidePanel selectedPlanet={selectedPlanet} />
       </aside>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>Milky Way Galaxy</h1>
-        <div className={styles.sceneContainer}>
-          <ThreeScene onPlanetClick={setSelectedPlanet} />
-        </div>
-      </main>
+      <MainView onPlanetClick={setSelectedPlanet} />
     </div>
   );
 }
