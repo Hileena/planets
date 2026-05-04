@@ -273,11 +273,12 @@ export default function SolarSystem({ onPlanetClick }: SolarSystemProps) {
           position: "absolute",
           bottom: 16,
           left: "50%",
-          // transform: "translateX(-50%)",
         }}
         variant="outlined"
       >
-        {isRotating ? "Stop Rotation" : "Start Rotation"}
+        {isRotating
+          ? "Stop Rotation Around the Sun"
+          : "Start Rotation Around the Sun"}
       </Button>
     </>
   );
