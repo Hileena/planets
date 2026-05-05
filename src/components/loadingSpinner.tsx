@@ -3,7 +3,7 @@ import styles from "./loadingSpinner.module.css";
 
 export function LoadingSpinner() {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} data-testid="loading-spinner">
       <RingLoader color="white" size={80} />
     </div>
   );
