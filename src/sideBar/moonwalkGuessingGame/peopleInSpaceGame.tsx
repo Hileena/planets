@@ -27,16 +27,20 @@ export function PeopleInSpaceGame({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <Modal open={true} onClose={onClose}>
-      <div className={styles.guessingGameContainer}>
+    <Modal
+      open={true}
+      onClose={onClose}
+      data-testid="people-in-space-game-modal"
+    >
+      <div role="dialog" className={styles.guessingGameContainer}>
         <div className={styles.headerContainer}>
-          <Typography variant="h4">
+          <Typography variant="h4" data-testid="header">
             {isCorrect
               ? "Correct!"
               : "How many people have walked on the moon?"}
           </Typography>
           {!isCorrect && (
-            <Typography>
+            <Typography data-testid="subheader">
               Try to guess the number of people who have moon walked!
             </Typography>
           )}
@@ -45,7 +49,12 @@ export function PeopleInSpaceGame({ onClose }: { onClose: () => void }) {
         <div className={styles.numberInputContainer}>
           <div className={styles.astronautCounterContainer}>
             {!isCorrect && (
-              <Button variant="outlined" onClick={handleDecrement}>
+              <Button
+                variant="outlined"
+                onClick={handleDecrement}
+                disabled={guess === 0}
+                data-testid="decrement-button"
+              >
                 -
               </Button>
             )}
@@ -54,12 +63,18 @@ export function PeopleInSpaceGame({ onClose }: { onClose: () => void }) {
               color={isCorrect ? "green" : "white"}
             />
             {!isCorrect && (
-              <Button variant="outlined" onClick={handleIncrement}>
+              <Button
+                variant="outlined"
+                onClick={handleIncrement}
+                data-testid="increment-button"
+              >
                 +
               </Button>
             )}
           </div>
-          <div className={styles.numberDisplay}>{guess} people</div>
+          <div className={styles.numberDisplay} data-testid="number-display">
+            {guess} people
+          </div>
         </div>
 
         <div className={styles.buttonsContainer}>
@@ -72,14 +87,20 @@ export function PeopleInSpaceGame({ onClose }: { onClose: () => void }) {
               <Button variant="outlined" onClick={onClose}>
                 Cancel
               </Button>
-              <Button variant="outlined" onClick={() => handleSubmit(guess)}>
+              <Button
+                variant="outlined"
+                onClick={() => handleSubmit(guess)}
+                data-testid="submit-button"
+              >
                 Submit
               </Button>
             </>
           )}
         </div>
         {isCorrect === false && (
-          <Typography variant="caption">Incorrect..Try again!</Typography>
+          <Typography variant="caption" data-testid="incorrect-message">
+            Incorrect..Try again!
+          </Typography>
         )}
       </div>
     </Modal>
