@@ -14,16 +14,21 @@ export function SidePanel({
 
   return (
     <div className={styles.container}>
-      <Typography variant="h3">Solar System</Typography>
+      <Typography variant="h3" data-testid="solar-system-header">
+        Solar System
+      </Typography>
       {selectedPlanet ? (
         <PlanetDetails planet={selectedPlanet} />
       ) : (
-        <p>Click on a planet to learn more about it</p>
+        <p data-testid="planet-prompt">
+          Click on a planet to learn more about it
+        </p>
       )}
 
       <div className={styles.guessingGameContainer}>
         <Button
           variant="contained"
+          data-testid="guessing-game-button"
           onClick={() => setGuessingGameStarted(true)}
         >
           How many walked the moon?

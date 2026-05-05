@@ -6,7 +6,7 @@ describe("moonwalkerGame", () => {
   it("should render the game modal with the correct details", () => {
     // Render the component
     render(<MoonwalkerGame onClose={() => {}} />);
-    const modalElement = screen.getByTestId("people-in-space-game-modal");
+    const modalElement = screen.getByTestId("moonwalker-game-modal");
     const header = screen.getByTestId("header");
     const subheader = screen.getByTestId("subheader");
 

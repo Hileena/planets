@@ -27,11 +27,7 @@ export function MoonwalkerGame({ onClose }: { onClose: () => void }) {
   };
 
   return (
-    <Modal
-      open={true}
-      onClose={onClose}
-      data-testid="people-in-space-game-modal"
-    >
+    <Modal open={true} onClose={onClose} data-testid="moonwalker-game-modal">
       <div role="dialog" className={styles.guessingGameContainer}>
         <div className={styles.headerContainer}>
           <Typography variant="h4" data-testid="header">
