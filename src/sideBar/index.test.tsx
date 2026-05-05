@@ -1,6 +1,22 @@
 import { fireEvent, render, screen } from "@testing-library/react";
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vitest } from "vitest";
 import { SidePanel } from ".";
+
+vitest.mock("../hooks/usePlanets", () => ({
+  usePlanets: vitest.fn(() => [
+    {
+      name: "Mars",
+      mass: 0.107,
+      radius: 0.532,
+      period: 687,
+      semi_major_axis: 1.524,
+      temperature: 210,
+      distance_light_year: 0.00000605,
+      host_star_mass: 1,
+      host_star_temperature: 5778,
+    },
+  ]),
+}));
 
 describe("SidePanel", () => {
   it("should render the SidePanel component", () => {

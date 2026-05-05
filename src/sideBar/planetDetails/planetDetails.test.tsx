@@ -15,6 +15,17 @@ const mockPlanets = [
     host_star_mass: 1,
     host_star_temperature: 5778,
   },
+  {
+    name: "Mars",
+    mass: 0.107,
+    radius: 0.532,
+    period: 687,
+    semi_major_axis: 1.524,
+    temperature: 210,
+    distance_light_year: 0.0000158,
+    host_star_mass: 1,
+    host_star_temperature: 5778,
+  },
 ];
 
 vitest.mock("../../hooks/usePlanets", () => ({
@@ -65,5 +76,15 @@ describe("planetDetails", () => {
     const loadingSpinner = screen.getByTestId("loading-spinner");
 
     expect(loadingSpinner).toBeInTheDocument();
+  });
+
+  it("should display a message when the selected planet is not found", () => {
+    render(<PlanetDetails planet="Venus" />);
+    const errorMessage = screen.getByTestId("planet-error");
+
+    expect(errorMessage).toBeInTheDocument();
+    expect(errorMessage).toHaveTextContent(
+      "Planet not found. Please click on a valid planet to see its details.",
+    );
   });
 });
