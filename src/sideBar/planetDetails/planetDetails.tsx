@@ -1,7 +1,7 @@
-import { usePlanets } from "../hooks/usePlanets";
-import styles from "./planet.details.module.css";
+import { usePlanets } from "../../hooks/usePlanets";
+import styles from "./planetDetails.module.css";
 import { Typography, List, ListItem, ListItemText } from "@mui/material";
-import { LoadingSpinner } from "../components/loadingSpinner";
+import { LoadingSpinner } from "../../components/loadingSpinner";
 
 export function PlanetDetails({ planet }: { planet: string }) {
   const planets = usePlanets();

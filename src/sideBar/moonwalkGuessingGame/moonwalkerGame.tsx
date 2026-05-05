@@ -1,9 +1,9 @@
 import { Modal, Typography, Button } from "@mui/material";
 import { GiAstronautHelmet } from "react-icons/gi";
-import styles from "./peopleInSpaceGame.module.css";
+import styles from "./moonwalkerGame.module.css";
 import { useState } from "react";
 
-export function PeopleInSpaceGame({ onClose }: { onClose: () => void }) {
+export function MoonwalkerGame({ onClose }: { onClose: () => void }) {
   const [guess, setGuess] = useState(0);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const totalPeopleMoonWalked = 12; // Total number of people who have walked on the moon

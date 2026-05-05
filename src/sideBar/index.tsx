@@ -1,9 +1,9 @@
 import styles from "./index.module.css";
 import { useState } from "react";
 import Button from "@mui/material/Button";
-import { PeopleInSpaceGame } from "./moonwalkGuessingGame/peopleInSpaceGame";
+import { MoonwalkerGame } from "./moonwalkGuessingGame/moonwalkerGame";
 import { Typography } from "@mui/material";
-import { PlanetDetails } from "./planetDetails";
+import { PlanetDetails } from "./planetDetails/planetDetails";
 
 export function SidePanel({
   selectedPlanet,
@@ -30,7 +30,7 @@ export function SidePanel({
         </Button>
       </div>
       {guessingGameStarted && (
-        <PeopleInSpaceGame onClose={() => setGuessingGameStarted(false)} />
+        <MoonwalkerGame onClose={() => setGuessingGameStarted(false)} />
       )}
     </div>
   );

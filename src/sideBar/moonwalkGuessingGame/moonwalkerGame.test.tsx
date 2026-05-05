@@ -1,11 +1,11 @@
 import { describe, it, expect } from "vitest";
 import { render, screen, fireEvent } from "@testing-library/react";
-import { PeopleInSpaceGame } from "./peopleInSpaceGame";
+import { MoonwalkerGame } from "./moonwalkerGame";
 
-describe("peopleInSpaceGame", () => {
+describe("moonwalkerGame", () => {
   it("should render the game modal with the correct details", () => {
     // Render the component
-    render(<PeopleInSpaceGame onClose={() => {}} />);
+    render(<MoonwalkerGame onClose={() => {}} />);
     const modalElement = screen.getByTestId("people-in-space-game-modal");
     const header = screen.getByTestId("header");
     const subheader = screen.getByTestId("subheader");
@@ -24,7 +24,7 @@ describe("peopleInSpaceGame", () => {
   });
 
   it("should display the correct message when the guess is correct", () => {
-    render(<PeopleInSpaceGame onClose={() => {}} />);
+    render(<MoonwalkerGame onClose={() => {}} />);
     const incrementButton = screen.getByTestId("increment-button");
     const submitButton = screen.getByTestId("submit-button");
 
@@ -44,13 +44,13 @@ describe("peopleInSpaceGame", () => {
   });
 
   it("should disable decrement button when guess is 0", () => {
-    render(<PeopleInSpaceGame onClose={() => {}} />);
+    render(<MoonwalkerGame onClose={() => {}} />);
     const decrementButton = screen.getByTestId("decrement-button");
     expect(decrementButton).toBeDisabled();
   });
 
   it("should enable decrement button when guess is greater than 0", () => {
-    render(<PeopleInSpaceGame onClose={() => {}} />);
+    render(<MoonwalkerGame onClose={() => {}} />);
     const incrementButton = screen.getByTestId("increment-button");
     const decrementButton = screen.getByTestId("decrement-button");
 
@@ -60,7 +60,7 @@ describe("peopleInSpaceGame", () => {
   });
 
   it("should display the incorrect message when the guess is wrong", () => {
-    render(<PeopleInSpaceGame onClose={() => {}} />);
+    render(<MoonwalkerGame onClose={() => {}} />);
     const submitButton = screen.getByTestId("submit-button");
 
     // Submit the guess without incrementing (guess is 0)
