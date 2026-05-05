@@ -48,6 +48,13 @@ describe("planetDetails", () => {
     const semiMajorAxisDetail = screen.getByTestId("semi-major-axis-detail");
     const temperatureDetail = screen.getByTestId("temperature-detail");
     const distanceDetail = screen.getByTestId("distance-detail");
+    const hostStarMassDetail = screen.getByTestId("host-star-mass-detail");
+    const hostStarTemperatureDetail = screen.getByTestId(
+      "host-star-temperature-detail",
+    );
+
+    // Assertions to check if the details are rendered correctly
+    expect(screen.getByText("Earth")).toBeInTheDocument();
 
     expect(planetDetailsList).toBeInTheDocument();
     expect(massDetail).toHaveTextContent("Mass");
@@ -67,6 +74,14 @@ describe("planetDetails", () => {
 
     expect(distanceDetail).toHaveTextContent("Distance from Earth");
     expect(distanceDetail).toHaveTextContent("0.0000158 light years");
+
+    expect(hostStarMassDetail).toHaveTextContent("Host Star Mass");
+    expect(hostStarMassDetail).toHaveTextContent("1 Solar masses");
+
+    expect(hostStarTemperatureDetail).toHaveTextContent(
+      "Host Star Temperature",
+    );
+    expect(hostStarTemperatureDetail).toHaveTextContent("5778 K");
   });
 
   it("should display a loading spinner when planet data is not available yet", () => {
