@@ -27,7 +27,7 @@ const solarSystemPlanets = [
 // fetches all planets in the solar system on mount using Promise.all rather than sequentially
 export const usePlanets = () => {
   const [planets, setPlanets] = useState<Planet[]>([]);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchPlanets = async () => {
