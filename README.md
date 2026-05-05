@@ -6,8 +6,8 @@ An interactive 3D solar system explorer built with React, TypeScript, and Three.
 
 - **3D Solar System** — all 8 planets rendered with texture maps using Three.js
 - **Orbital Animation** — toggle planetary rotation and orbits with a camera pull-back effect
-- **Planet Details** — click any planet to view live data (mass, radius, temperature, orbital period) fetched from the [API Ninjas Planets API](https://api-ninjas.com/api/planets)
-- **Moonwalk Guessing Game** — a sidebar mini-game that allows the users to guess how many people have walked the moon
+- **Planet Details** — click any planet to view live data (mass, radius, orbital period, semi-major axis, temperature, distance from Earth, host star mass and temperature) fetched from the [API Ninjas Planets API](https://api-ninjas.com/api/planets)
+- **Moonwalker Guessing Game** — a sidebar mini-game where you guess how many people have walked on the moon
 - **Orbit Controls** — drag to rotate, scroll to zoom, pan to explore
 
 ## Tech Stack
@@ -15,7 +15,10 @@ An interactive 3D solar system explorer built with React, TypeScript, and Three.
 - [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - [Three.js](https://threejs.org/) — 3D rendering
 - [MUI](https://mui.com/) — UI components
+- [react-icons](https://react-icons.github.io/react-icons/) — icon library
+- [react-spinners](https://www.davidhu.io/react-spinners/) — loading spinner
 - [Vite](https://vitejs.dev/) — build tooling
+- [Vitest](https://vitest.dev/) + [Testing Library](https://testing-library.com/) — unit tests
 
 ## Getting Started
 
@@ -47,6 +50,12 @@ The key is used server-side via the Vite dev proxy (`/api` → `https://api.api-
 npm run dev
 ```
 
+### 4. Run tests
+
+```bash
+npm test
+```
+
 ## Project Structure
 
 ```
@@ -54,6 +63,7 @@ src/
 ├── App.tsx                          # Layout — sidebar + main area
 ├── App.module.css                   # Page-level styles
 ├── index.css                        # Global reset and theme variables
+├── setupTests.ts                    # Vitest global test setup
 ├── components/
 │   └── loadingSpinner.tsx           # Shared loading spinner
 ├── hooks/
@@ -63,9 +73,10 @@ src/
 │   └── solarSystem.tsx              # Three.js solar system scene
 └── sideBar/
     ├── index.tsx                    # Sidebar panel — planet details or prompt
-    ├── planetDetails.tsx            # Planet stats shown on click
+    ├── planetDetails/
+    │   └── planetDetails.tsx        # Planet stats shown on click
     └── moonwalkGuessingGame/
-        └── peopleInSpaceGame.tsx    # ISS crew guessing game
+        └── moonwalkerGame.tsx       # Moonwalker guessing game modal
 ```
 
 ## Textures
@@ -74,13 +85,14 @@ Planet texture maps should be placed in `public/textures/`:
 
 ```
 public/textures/
-├── sun.jpg
-├── mercury.jpg
-├── venus.jpg
-├── earth.jpg
-├── mars.jpg
-├── jupiter.jpg
-├── saturn.jpg
-├── uranus.jpg
-└── neptune.jpg
+├── Sun.jpg
+├── Mercury.jpg
+├── Venus.jpg
+├── Earth.jpg
+├── Mars.jpg
+├── Jupiter.jpg
+├── Saturn.jpg
+├── SaturnRing.jpg
+├── Uranus.jpg
+└── Neptune.jpg
 ```
