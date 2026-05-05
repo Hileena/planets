@@ -2,6 +2,8 @@
 
 An interactive 3D solar system explorer built with React, TypeScript, and Three.js.
 
+**[Live Demo](https://planets-one.vercel.app/)**
+
 ## Features
 
 - **3D Solar System** — all 8 planets rendered with texture maps using Three.js
