@@ -34,11 +34,7 @@ export const usePlanets = () => {
       try {
         const response = await Promise.all(
           solarSystemPlanets.map((planet) =>
-            fetch(`/api/v1/planets?name=${planet}`, {
-              headers: {
-                "X-Api-Key": import.meta.env.VITE_NINJA_PLANETS_API_KEY,
-              },
-            }),
+            fetch(`/api/planets?name=${planet}`),
           ),
         );
         const data = await Promise.all(response.map((res) => res.json()));
