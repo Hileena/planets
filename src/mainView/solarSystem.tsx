@@ -51,23 +51,23 @@ export default function SolarSystem({ onPlanetClick }: SolarSystemProps) {
      */
     const textureLoader = new THREE.TextureLoader();
 
-    const sunTexture = textureLoader.load("/public/textures/sun.jpg");
+    const sunTexture = textureLoader.load("/textures/Sun.jpg");
     sunTexture.colorSpace = THREE.SRGBColorSpace;
-    const mercuryTexture = textureLoader.load("/public/textures/mercury.jpg");
+    const mercuryTexture = textureLoader.load("/textures/Mercury.jpg");
     mercuryTexture.colorSpace = THREE.SRGBColorSpace;
-    const venusTexture = textureLoader.load("/public/textures/venus.jpg");
+    const venusTexture = textureLoader.load("/textures/Venus.jpg");
     venusTexture.colorSpace = THREE.SRGBColorSpace;
-    const earthTexture = textureLoader.load("/public/textures/earth.jpg");
+    const earthTexture = textureLoader.load("/textures/Earth.jpg");
     earthTexture.colorSpace = THREE.SRGBColorSpace;
-    const marsTexture = textureLoader.load("/public/textures/mars.jpg");
+    const marsTexture = textureLoader.load("/textures/Mars.jpg");
     marsTexture.colorSpace = THREE.SRGBColorSpace;
-    const jupiterTexture = textureLoader.load("/public/textures/jupiter.jpg");
+    const jupiterTexture = textureLoader.load("/textures/Jupiter.jpg");
     jupiterTexture.colorSpace = THREE.SRGBColorSpace;
-    const saturnTexture = textureLoader.load("/public/textures/saturn.jpg");
+    const saturnTexture = textureLoader.load("/textures/Saturn.jpg");
     saturnTexture.colorSpace = THREE.SRGBColorSpace;
-    const uranusTexture = textureLoader.load("/public/textures/uranus.jpg");
+    const uranusTexture = textureLoader.load("/textures/Uranus.jpg");
     uranusTexture.colorSpace = THREE.SRGBColorSpace;
-    const neptuneTexture = textureLoader.load("/public/textures/neptune.jpg");
+    const neptuneTexture = textureLoader.load("/textures/Neptune.jpg");
     neptuneTexture.colorSpace = THREE.SRGBColorSpace;
 
     /**
